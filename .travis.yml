@@ -5,6 +5,7 @@ jdk:
   - openjdk6
 
 after_success:
+  - ./gradlew jacocoTestReport coveralls
   - bash <(curl -s https://codecov.io/bash)
 
 notifications:
