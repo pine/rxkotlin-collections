@@ -4,10 +4,9 @@ jdk:
   - oraclejdk7
   - openjdk6
 
-before_install:
-  - pip install --user codecov
-
 after_success:
+  - ./gradlew jacocoTestReport
+  - pip install --user codecov
   - codecov
 
 notifications:
