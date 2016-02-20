@@ -1,5 +1,5 @@
-# RxKotlin Collection
-Kotlin Collection Methods for RxJava.
+# RxKotlin Collections
+Kotlin Collections Methods for RxJava.
 
 
 ## License
