@@ -1,7 +1,7 @@
 @file:kotlin.jvm.JvmMultifileClass
 @file:kotlin.jvm.JvmName("CollectionsKt")
 
-package moe.pine.rx.collection
+package moe.pine.rx.collections
 
 import rx.Observable
 

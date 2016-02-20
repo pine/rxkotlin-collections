@@ -1,4 +1,4 @@
-package moe.pine.rx.collection
+package moe.pine.rx.collections
 
 import org.junit.After
 import org.junit.Before
