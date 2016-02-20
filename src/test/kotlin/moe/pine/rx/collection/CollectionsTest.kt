@@ -23,11 +23,29 @@ class CollectionsTest {
     fun filterIndexed() {
         val observable: Observable<String> = Observable.from(listOf("a", "b", "c"))
         TestSubscriber<String>().apply {
-            observable.filterIndexed { i, s ->  i == 0 || s == "c" }.subscribe(this)
+            observable.filterIndexed { i, s -> i == 0 || s == "c" }.subscribe(this)
             this.assertNoErrors()
             this.assertValueCount(2)
             this.assertValues("a", "c")
             this.assertCompleted()
+        }
+    }
+
+    @Test
+    fun filterIsInstance() {
+        val observable: Observable<Any> = Observable.just(1, false, "a")
+        TestSubscriber<Boolean>().apply {
+            observable.filterIsInstance<Boolean>().subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValue(false)
+        }
+
+        TestSubscriber<String>().apply {
+            observable.filterIsInstance(String::class.java).subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValue("a")
         }
     }
 
@@ -51,6 +69,61 @@ class CollectionsTest {
             this.assertNoErrors()
             this.assertValueCount(2)
             this.assertValues(1, 3)
+            this.assertCompleted()
+        }
+    }
+
+    @Test
+    fun flatten() {
+        val observer: Observable<Iterable<String>> = Observable.just(listOf("a", "b", "c"))
+        TestSubscriber<String>().apply {
+            observer.flatten().subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(3)
+            this.assertValues("a", "b", "c")
+            this.assertCompleted()
+        }
+    }
+
+    @Test
+    fun isNotEmpty() {
+        TestSubscriber<Boolean>().apply {
+            Observable.empty<Int>().isNotEmpty().subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValue(false)
+            this.assertCompleted()
+        }
+
+        TestSubscriber<Boolean>().apply {
+            Observable.just(1).isNotEmpty().subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValue(true)
+            this.assertCompleted()
+        }
+    }
+
+    @Test
+    fun mapIndexed() {
+        val observable = Observable.from(listOf("a", "b", "c"))
+        TestSubscriber<IndexedValue<String>>().apply {
+            observable.mapIndexed { index, value -> IndexedValue(index + 1, value) }.subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(3)
+            this.assertValues(IndexedValue(1, "a"), IndexedValue(2, "b"), IndexedValue(3, "c"))
+            this.assertCompleted()
+        }
+    }
+
+    @Test
+    fun mapIndexedNotNull() {
+        val observable = Observable.from(listOf("a", "b", "c"))
+        TestSubscriber<String>().apply {
+            observable.mapIndexedNotNull { index, value -> if (index % 2 == 0) value else null }.subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(2)
+            this.assertValues("a", "c")
             this.assertCompleted()
         }
     }

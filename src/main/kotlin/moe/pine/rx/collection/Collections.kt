@@ -13,12 +13,38 @@ fun <T> Observable<T>.filterIndexed(predicate: (Int, T) -> Boolean): Observable<
     return this.withIndex().filter { predicate(it.index, it.value) }.map { it.value }
 }
 
+inline fun <reified R> Observable<*>.filterIsInstance(): Observable<R> {
+    return this.filter { it is R }.map { it as R }
+}
+
+fun <R> Observable<*>.filterIsInstance(klass: Class<R>): Observable<R> {
+    @Suppress("UNCHECKED_CAST")
+    return this.filter { klass.isInstance(it) }.map { it as R }
+}
+
 fun <T> Observable<T>.filterNot(predicate: (T) -> Boolean): Observable<T> {
     return this.filter { !predicate(it) }
 }
 
-fun <T : Any> Observable<T?>.filterNotNull(): Observable<T> {
-    return this.filter { it != null }.map { it!! }
+fun <T : Any> Observable<out T?>.filterNotNull(): Observable<T> {
+    @Suppress("UNCHECKED_CAST")
+    return this.filter { it != null }.map { it as T }
+}
+
+fun <T> Observable<Iterable<out T>>.flatten(): Observable<T> {
+    return this.flatMapIterable { it }
+}
+
+fun <T> Observable<T>.isNotEmpty(): Observable<Boolean> {
+    return this.isEmpty.map { !it }
+}
+
+fun <T, R> Observable<out T>.mapIndexed(transform: (Int, T) -> R): Observable<R> {
+    return this.withIndex().map { transform(it.index, it.value) }
+}
+
+fun <T, R: Any> Observable<out T>.mapIndexedNotNull(transform: (Int, T) -> R?): Observable<R> {
+    return this.mapIndexed(transform).filterNotNull()
 }
 
 fun <T, R : Any> Observable<T>.mapNotNull(transform: (T) -> R?): Observable<R> {
@@ -33,7 +59,7 @@ fun <T> Observable<T>.none(predicate: (T) -> Boolean): Observable<Boolean> {
     return this.filter(predicate).isEmpty
 }
 
-fun <T> Observable<T>.withIndex(): Observable<IndexedValue<T>> {
+fun <T> Observable<out T>.withIndex(): Observable<IndexedValue<T>> {
     return Observable.zip(
             Observable.range(0, Int.MAX_VALUE),
             this,
