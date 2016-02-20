@@ -1,2 +1,6 @@
 # RxKotlin Collection
-Kotlin Collection Methods for ReactiveX.
+Kotlin Collection Methods for RxJava.
+
+
+## License
+MIT License
