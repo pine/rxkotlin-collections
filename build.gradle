@@ -17,8 +17,8 @@ apply plugin: 'signing'
 apply plugin: 'com.novoda.bintray-release'
 
 group            = 'moe.pine'
-version          = '0.0.1'
-archivesBaseName = 'rxkotlin-collection'
+version          = '0.0.2'
+archivesBaseName = 'rxkotlin-collections'
 
 repositories {
     mavenCentral()
@@ -52,9 +52,10 @@ publish {
     userOrg        = 'pinemz'
     groupId        = 'moe.pine'
     artifactId     = 'rxkotlin-collections'
-    publishVersion = '0.0.1'
+    publishVersion = project.version
     desc           = 'Kotlin Collections Methods for RxJava'
     website        = 'https://github.com/pine613/rxkotlin-collections'
+    licences       = ["MIT"]
 }
 
 task sourcesJar(type: Jar) {
