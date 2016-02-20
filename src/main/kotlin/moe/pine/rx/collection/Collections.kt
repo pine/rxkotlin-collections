@@ -31,7 +31,7 @@ fun <T : Any> Observable<out T?>.filterNotNull(): Observable<T> {
     return this.filter { it != null }.map { it as T }
 }
 
-fun <T> Observable<Iterable<out T>>.flatten(): Observable<T> {
+fun <T> Observable<Iterable<T>>.flatten(): Observable<T> {
     return this.flatMapIterable { it }
 }
 
