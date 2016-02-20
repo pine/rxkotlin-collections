@@ -5,9 +5,7 @@ jdk:
   - openjdk6
 
 after_success:
-  - ./gradlew jacocoTestReport
-  - pip install --user codecov
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   slack:
