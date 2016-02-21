@@ -4,7 +4,7 @@ Kotlin Collections Methods for RxJava.
 ## Getting Started
 Please type it in your build.gradle file.
 
-```
+```groovy
 repositories {
     jcenter()
 }
