@@ -14,6 +14,32 @@ dependencies {
 }
 ```
 
+## Usage
+You can use Observable extensions like [Kotlin collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/) as the following.
+
+```kotlin
+import moe.pine.rx.collections.filterNotNull
+import rx.Observable
+
+val observable: Observable<String?> = Observable.from(listOf("a", null, "c"))
+observable.filterNotNull().subscribe { println(it) }
+// => "a", "c"
+```
+
+In addition, this library provides an extensions of the following.
+
+- filterIndexed
+- filterIsInstance
+- filterNot
+- filterNotNull
+- flatten
+- isNotEmpty
+- mapIndexed
+- mapIndexedNotNull
+- mapNotNull
+- none
+- withIndex
+
 ## Test
 ```
 $ ./gradlew clean test
