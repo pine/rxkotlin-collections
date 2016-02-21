@@ -9,7 +9,6 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.novoda:bintray-release:0.3.4'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3'
-        classpath 'net.saliman:gradle-cobertura-plugin:2.3.0'
     }
 }
 
@@ -59,6 +58,7 @@ publish {
     desc           = 'Kotlin Collections Methods for RxJava'
     website        = 'https://github.com/pine613/rxkotlin-collections'
     licences       = ["MIT"]
+    dryRun         = false
 }
 
 task sourcesJar(type: Jar) {
