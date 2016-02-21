@@ -32,6 +32,10 @@ fun <T> Observable<Iterable<T>>.flatten(): Observable<T> {
     return this.flatMapIterable { it }
 }
 
+fun <T> Observable<out T>.forEachIndexed(action : (Int, T) -> Unit) {
+    this.withIndex().forEach { action(it.index, it.value) }
+}
+
 fun <T> Observable<T>.isNotEmpty(): Observable<Boolean> {
     return this.isEmpty.map { !it }
 }

@@ -86,6 +86,18 @@ class CollectionsTest {
     }
 
     @Test
+    fun forEachIndexed() {
+        val observable: Observable<String> = Observable.from(listOf("a", "b", "c"))
+        TestSubscriber<IndexedValue<String>>().apply {
+            observable.forEachIndexed { index, value -> this.onNext(IndexedValue(index, value)) }
+            this.onCompleted()
+            this.assertValueCount(3)
+            this.assertValues(IndexedValue(0, "a"), IndexedValue(1, "b"), IndexedValue(2, "c"))
+            this.assertCompleted()
+        }
+    }
+
+    @Test
     fun isNotEmpty() {
         TestSubscriber<Boolean>().apply {
             Observable.empty<Int>().isNotEmpty().subscribe(this)
