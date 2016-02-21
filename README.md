@@ -1,4 +1,4 @@
-# RxKotlin Collections [![Bintray](https://img.shields.io/bintray/v/pinemz/maven/rxkotlin-collections.svg)](https://bintray.com/pinemz/maven/rxkotlin-collections/view) [![Build Status](https://travis-ci.org/pine613/rxkotlin-collections.svg?branch=master)](https://travis-ci.org/pine613/rxkotlin-collections) [![Coverage Status](https://coveralls.io/repos/github/pine613/rxkotlin-collections/badge.svg?branch=master)](https://coveralls.io/github/pine613/rxkotlin-collections?branch=master)
+# RxKotlin Collections [![Bintray](https://img.shields.io/bintray/v/pinemz/maven/rxkotlin-collections.svg?style=flat-square)](https://bintray.com/pinemz/maven/rxkotlin-collections/view) [![Build Status](https://img.shields.io/travis/pine613/rxkotlin-collections/master.svg?style=flat-square)](https://travis-ci.org/pine613/rxkotlin-collections) [![Coverage Status](https://img.shields.io/coveralls/pine613/rxkotlin-collections/master.svg?style=flat-square)](https://coveralls.io/github/pine613/rxkotlin-collections?branch=master)
 Kotlin Collections Methods for RxJava.
 
 ## Getting Started
