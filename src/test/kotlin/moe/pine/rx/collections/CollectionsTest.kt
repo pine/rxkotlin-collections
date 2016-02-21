@@ -176,6 +176,17 @@ class CollectionsTest {
     }
 
     @Test
+    fun requireNoNulls() {
+        TestSubscriber<Int>().apply {
+            Observable.just(1, null).requireNoNulls().subscribe(this)
+            this.assertValueCount(1)
+            this.assertValue(1)
+            this.assertError(IllegalArgumentException::class.java)
+            this.assertNotCompleted()
+        }
+    }
+
+    @Test
     fun withIndex() {
         val observable = Observable.from(listOf("a", "b", "c"))
         TestSubscriber<IndexedValue<String>>().apply {

@@ -40,7 +40,7 @@ fun <T, R> Observable<out T>.mapIndexed(transform: (Int, T) -> R): Observable<R>
     return this.withIndex().map { transform(it.index, it.value) }
 }
 
-fun <T, R: Any> Observable<out T>.mapIndexedNotNull(transform: (Int, T) -> R?): Observable<R> {
+fun <T, R : Any> Observable<out T>.mapIndexedNotNull(transform: (Int, T) -> R?): Observable<R> {
     return this.mapIndexed(transform).filterNotNull()
 }
 
@@ -54,6 +54,13 @@ fun <T> Observable<T>.none(): Observable<Boolean> {
 
 fun <T> Observable<T>.none(predicate: (T) -> Boolean): Observable<Boolean> {
     return this.filter(predicate).isEmpty
+}
+
+fun <T : Any> Observable<T?>.requireNoNulls(): Observable<T> {
+    return this.map {
+        if (it == null) throw IllegalArgumentException("null element found in $this.")
+        it
+    }
 }
 
 fun <T> Observable<out T>.withIndex(): Observable<IndexedValue<T>> {
