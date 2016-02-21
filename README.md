@@ -1,4 +1,4 @@
-# RxKotlin Collections [![Build Status](https://travis-ci.org/pine613/rxkotlin-collections.svg?branch=master)](https://travis-ci.org/pine613/rxkotlin-collections) [![codecov.io](https://codecov.io/github/pine613/rxkotlin-collections/coverage.svg?branch=master)](https://codecov.io/github/pine613/rxkotlin-collections?branch=master)
+# RxKotlin Collections [![Bintray](https://img.shields.io/bintray/v/pinemz/maven/rxkotlin-collections.svg) ](https://bintray.com/pinemz/maven/rxkotlin-collections/_latestVersion) [![Build Status](https://travis-ci.org/pine613/rxkotlin-collections.svg?branch=master)](https://travis-ci.org/pine613/rxkotlin-collections) [![codecov.io](https://codecov.io/github/pine613/rxkotlin-collections/coverage.svg?branch=master)](https://codecov.io/github/pine613/rxkotlin-collections?branch=master)
 Kotlin Collections Methods for RxJava.
 
 ## Getting Started
