@@ -4,9 +4,9 @@ jdk:
   - oraclejdk7
 
 after_success:
-  - ./gradlew jacocoTestReport coveralls
   - bash <(curl -s https://codecov.io/bash)
-
+  - ./gradlew coveralls
+  
 notifications:
   slack:
     - secure: "aZ5D4vra4LlmFxbPc/fRQRiy7Y/P9vtBwTwbZIlBfuH17OX18Ez47jwsglnd2CsDXHBVCJ/LVYc81svgi04YW82r+sWYZ3EcPDARdSrQbERxmS1kN/ohDX5fPNa9b30zhvVqOjYm8JrxaES07Q30C2RdNu9SD5dVIbYPknZx9ofA0Lwnj+kkS0xsTNrv0MdSYVueijQYy3EE5FKUaivpRurHBqgYK89X9Yvu2FuXpTC71OEwSieFfdxJa8lHYGuw5oPtFAfZyw67BcckYusATY3rv3yThz5rhUjO7LW0UfeSk4Rb7PcwFy84xeP/a4I7+M25HWzMCWV5xb8v/w4Jo4/rZrZQrNrpZT9ORdW9XvB+PeuURTVC0CMOCooOOA/+g8Q3F6ZOR7MEZe6EutIFlD9BWKB1A92PXgSyVuLqr91YvPyAef2++eePxI9ebyUUiHG72ZI6HXz9LPjD/hI6m+9Bhw9ZGaZlcbnPQVfMESRwa32Gu0fcQZxGObGMoHBMVWyUNJmTr+0gjuPu4jFny1PGatICGQM6Pqk+jY8jFQIQKMO6vGIGli3diokaQocoFezQalVSMAlb2xJGgFW3k2IFCHsrUxmKKJQ9JF3Fin0vqI4vQEzx33N/3ShdQf+6Q5IXdGolf06oJ1wFfMbRa8230vG6miL47xjDtZy/bKw="
