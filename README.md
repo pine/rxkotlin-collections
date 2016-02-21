@@ -33,11 +33,13 @@ In addition, this library provides an extensions of the following.
 - filterNot
 - filterNotNull
 - flatten
+- forEachIndexed
 - isNotEmpty
 - mapIndexed
 - mapIndexedNotNull
 - mapNotNull
 - none
+- requiresNotNull
 - withIndex
 
 ## Test
