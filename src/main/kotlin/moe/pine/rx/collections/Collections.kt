@@ -25,7 +25,7 @@ fun <T> Observable<T>.filterNot(predicate: (T) -> Boolean): Observable<T> {
 
 fun <T : Any> Observable<out T?>.filterNotNull(): Observable<T> {
     @Suppress("UNCHECKED_CAST")
-    return this.filter { it != null }.map { it as T }
+    return this.filter { it != null } as Observable<T>
 }
 
 fun <T> Observable<Iterable<T>>.flatten(): Observable<T> {
