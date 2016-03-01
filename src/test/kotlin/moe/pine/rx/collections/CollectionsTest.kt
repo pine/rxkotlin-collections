@@ -188,6 +188,31 @@ class CollectionsTest {
     }
 
     @Test
+    fun orEmpty() {
+        TestSubscriber<Int>().apply {
+            (null as Observable<Int>?).orEmpty().subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(0)
+            this.assertCompleted()
+        }
+
+        TestSubscriber<Int>().apply {
+            (Observable.empty<Int>() as Observable<Int>?).orEmpty().subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(0)
+            this.assertCompleted()
+        }
+
+        TestSubscriber<Int>().apply {
+            (Observable.just(100) as Observable<Int>?).orEmpty().subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValue(100)
+            this.assertCompleted()
+        }
+    }
+
+    @Test
     fun requireNoNulls() {
         TestSubscriber<Int>().apply {
             Observable.just(1, null).requireNoNulls().subscribe(this)

@@ -60,6 +60,10 @@ fun <T> Observable<T>.none(predicate: (T) -> Boolean): Observable<Boolean> {
     return this.filter(predicate).isEmpty
 }
 
+fun <T> Observable<T>?.orEmpty(): Observable<T> {
+    return this ?: Observable.empty()
+}
+
 fun <T : Any> Observable<T?>.requireNoNulls(): Observable<T> {
     return this.map {
         if (it == null) throw IllegalArgumentException("null element found in $this.")
