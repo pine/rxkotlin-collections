@@ -39,6 +39,7 @@ In addition, this library provides an extensions of the following.
 - mapIndexedNotNull
 - mapNotNull
 - none
+- orEmpty
 - requiresNotNull
 - withIndex
 
