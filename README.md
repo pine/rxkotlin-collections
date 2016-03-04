@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile 'moe.pine:rxkotlin-collections:0.0.5'
+    compile 'moe.pine:rxkotlin-collections:0.0.6'
 }
 ```
 
@@ -40,6 +40,7 @@ In addition, this library provides an extensions of the following.
 - mapNotNull
 - none
 - orEmpty
+- reduceIndexed
 - requiresNotNull
 - withIndex
 
