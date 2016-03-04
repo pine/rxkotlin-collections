@@ -5,6 +5,8 @@ import org.junit.Before
 import org.junit.Test
 import rx.Observable
 import rx.observers.TestSubscriber
+import java.util.*
+import kotlin.test.assertEquals
 
 /**
  * Test for Collections Extensions
@@ -209,6 +211,33 @@ class CollectionsTest {
             this.assertValueCount(1)
             this.assertValue(100)
             this.assertCompleted()
+        }
+    }
+
+    @Test
+    fun reduceIndexed() {
+        TestSubscriber<Int>().apply {
+            var indexes = ArrayList<Int>()
+            Observable.just(1, 2, 3, 4).reduceIndexed { index, a, b -> indexes.add(index); a + b }.subscribe(this)
+
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValue(10)
+            this.assertCompleted()
+
+            assertEquals(listOf(1, 2, 3), indexes.toList())
+        }
+
+        TestSubscriber<Int>().apply {
+            var indexes = ArrayList<Int>()
+            Observable.just(1, 2, 3, 4).reduceIndexed(0) { index, a, b -> indexes.add(index); a + b }.subscribe(this)
+
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValue(10)
+            this.assertCompleted()
+
+            assertEquals(listOf(0, 1, 2, 3), indexes.toList())
         }
     }
 

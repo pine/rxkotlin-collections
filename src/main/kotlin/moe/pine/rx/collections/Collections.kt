@@ -32,7 +32,7 @@ fun <T> Observable<Iterable<T>>.flatten(): Observable<T> {
     return this.flatMapIterable { it }
 }
 
-fun <T> Observable<out T>.forEachIndexed(action : (Int, T) -> Unit) {
+fun <T> Observable<out T>.forEachIndexed(action: (Int, T) -> Unit) {
     this.withIndex().forEach { action(it.index, it.value) }
 }
 
@@ -62,6 +62,18 @@ fun <T> Observable<T>.none(predicate: (T) -> Boolean): Observable<Boolean> {
 
 fun <T> Observable<T>?.orEmpty(): Observable<T> {
     return this ?: Observable.empty()
+}
+
+fun <T> Observable<T>.reduceIndexed(operation: (Int, T, T) -> T): Observable<T> {
+    return this.withIndex().reduce { accumulator, value ->
+        IndexedValue(value.index, operation(value.index, accumulator.value, value.value))
+    }.map { it.value }
+}
+
+fun <S, T : S> Observable<T>.reduceIndexed(initialValue: S, operation: (Int, S, T) -> T): Observable<S> {
+    return this.withIndex().reduce(initialValue) { accumulator, value ->
+        operation(value.index, accumulator, value.value)
+    }
 }
 
 fun <T : Any> Observable<T?>.requireNoNulls(): Observable<T> {
