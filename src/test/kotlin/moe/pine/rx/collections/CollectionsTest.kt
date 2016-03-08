@@ -5,6 +5,7 @@ import org.junit.Before
 import org.junit.Test
 import rx.Observable
 import rx.observers.TestSubscriber
+import rx.subjects.PublishSubject
 import java.util.*
 import kotlin.test.assertEquals
 
@@ -254,13 +255,27 @@ class CollectionsTest {
 
     @Test
     fun withIndex() {
-        val observable = Observable.from(listOf("a", "b", "c"))
         TestSubscriber<IndexedValue<String>>().apply {
+            val observable = Observable.from(listOf("a", "b", "c"))
             observable.withIndex().subscribe(this)
             this.assertNoErrors()
             this.assertValueCount(3)
             this.assertValues(IndexedValue(0, "a"), IndexedValue(1, "b"), IndexedValue(2, "c"))
             this.assertCompleted()
+        }
+
+        TestSubscriber<IndexedValue<String>>().apply {
+            val observable1 = PublishSubject.create<String>()
+            val observable2 = PublishSubject.create<String>()
+            observable1.withIndex().subscribe(this)
+            observable2.withIndex().subscribe(this)
+
+            observable1.onNext("a")
+            observable2.onNext("b")
+
+            this.assertNoErrors()
+            this.assertValueCount(2)
+            this.assertValues(IndexedValue(0, "a"), IndexedValue(0, "b"))
         }
     }
 }
