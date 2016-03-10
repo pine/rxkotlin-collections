@@ -29,11 +29,11 @@ fun <T : Any> Observable<out T?>.filterNotNull(): Observable<T> {
     return this.filter { it != null } as Observable<T>
 }
 
-fun <T : Any> Observable<out T>.firstOrNull(): Observable<out T?> {
+fun <T> Observable<out T>.firstOrNull(): Observable<out T?> {
     return this.firstOrDefault(null)
 }
 
-fun <T : Any> Observable<out T>.firstOrNull(predicate: (T) -> Boolean): Observable<out T?> {
+fun <T> Observable<out T>.firstOrNull(predicate: (T) -> Boolean): Observable<out T?> {
     return this.firstOrDefault(null, Func1 { predicate(it) })
 }
 
