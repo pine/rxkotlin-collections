@@ -32,6 +32,7 @@ In addition, this library provides an extensions of the following.
 - filterIsInstance
 - filterNot
 - filterNotNull
+- firstOrNull
 - flatten
 - forEachIndexed
 - isNotEmpty
