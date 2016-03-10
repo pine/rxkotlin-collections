@@ -79,7 +79,7 @@ class CollectionsTest {
     @Test
     fun firstOrNull() {
         TestSubscriber<Int?>().apply {
-            val observable = Observable.just(1024)
+            val observable = Observable.just(1024, 2048)
             observable.firstOrNull().subscribe(this)
             this.assertNoErrors()
             this.assertValueCount(1)
@@ -90,6 +90,24 @@ class CollectionsTest {
         TestSubscriber<Int?>().apply {
             val observable = Observable.empty<Int>()
             observable.firstOrNull().subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValues(null)
+            this.assertCompleted()
+        }
+
+        TestSubscriber<Int?>().apply {
+            val observable = Observable.just(0, 1, 2)
+            observable.firstOrNull { it > 0 }.subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValues(1)
+            this.assertCompleted()
+        }
+
+        TestSubscriber<Int?>().apply {
+            val observable = Observable.just(0, 1, 2)
+            observable.firstOrNull { it > 2 }.subscribe(this)
             this.assertNoErrors()
             this.assertValueCount(1)
             this.assertValues(null)
