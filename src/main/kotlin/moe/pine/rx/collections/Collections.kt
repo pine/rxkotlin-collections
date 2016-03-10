@@ -1,6 +1,7 @@
 package moe.pine.rx.collections
 
 import rx.Observable
+import rx.functions.Func1
 
 /**
  * Collection Utils for Observable
@@ -30,6 +31,10 @@ fun <T : Any> Observable<out T?>.filterNotNull(): Observable<T> {
 
 fun <T : Any> Observable<out T>.firstOrNull(): Observable<out T?> {
     return this.firstOrDefault(null)
+}
+
+fun <T : Any> Observable<out T>.firstOrNull(predicate: (T) -> Boolean): Observable<out T?> {
+    return this.firstOrDefault(null, Func1 { predicate(it) })
 }
 
 fun <T> Observable<Iterable<T>>.flatten(): Observable<T> {
