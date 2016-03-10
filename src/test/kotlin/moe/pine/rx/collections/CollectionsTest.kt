@@ -77,6 +77,27 @@ class CollectionsTest {
     }
 
     @Test
+    fun firstOrNull() {
+        TestSubscriber<Int?>().apply {
+            val observable = Observable.just(1024)
+            observable.firstOrNull().subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValues(1024)
+            this.assertCompleted()
+        }
+
+        TestSubscriber<Int?>().apply {
+            val observable = Observable.empty<Int>()
+            observable.firstOrNull().subscribe(this)
+            this.assertNoErrors()
+            this.assertValueCount(1)
+            this.assertValues(null)
+            this.assertCompleted()
+        }
+    }
+
+    @Test
     fun flatten() {
         val observer: Observable<Iterable<String>> = Observable.just(listOf("a", "b", "c"))
         TestSubscriber<String>().apply {

@@ -28,6 +28,10 @@ fun <T : Any> Observable<out T?>.filterNotNull(): Observable<T> {
     return this.filter { it != null } as Observable<T>
 }
 
+fun <T : Any> Observable<out T>.firstOrNull(): Observable<out T?> {
+    return this.firstOrDefault(null)
+}
+
 fun <T> Observable<Iterable<T>>.flatten(): Observable<T> {
     return this.flatMapIterable { it }
 }
