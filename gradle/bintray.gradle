@@ -1,0 +1,63 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+def siteUrl = 'https://github.com/pine613/rxkotlin-collections'
+def gitUrl = 'https://github.com/pine613/rxkotlin-collections.git'
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+
+    configurations = ['archives']
+    dryRun = false
+    publish = true
+
+    pkg {
+        userOrg = 'pinemz'
+        repo = 'maven'
+        name = project.name
+        desc = 'Kotlin Collections Methods for RxJava'
+        licenses = ['MIT']
+        vcsUrl = siteUrl
+        issueTrackerUrl = 'https://github.com/pine613/rxkotlin-collections/issues'
+        publicDownloadNumbers = true
+
+        version {
+            name = project.version
+            vcsTag = project.version
+        }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                name project.name
+                url siteUrl
+                licenses {
+                    license {
+                        name 'MIT License'
+                        url 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'pinemz'
+                        name 'Pine Mizune'
+                        email 'pinemz@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+artifacts {
+    archives sourcesJar
+}

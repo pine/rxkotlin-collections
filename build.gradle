@@ -7,15 +7,16 @@ buildscript {
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.novoda:bintray-release:0.3.4'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3'
+        classpath 'net.rdrei.android.buildtimetracker:gradle-plugin:0.5.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
     }
 }
 
 apply plugin: 'kotlin'
 apply plugin: 'signing'
 apply plugin: 'jacoco'
-apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'com.github.kt3k.coveralls'
 
 group            = 'moe.pine'
@@ -50,25 +51,14 @@ sourceSets {
     test.java.srcDirs += 'src/test/kotlin'
 }
 
-publish {
-    userOrg        = 'pinemz'
-    groupId        = 'moe.pine'
-    artifactId     = 'rxkotlin-collections'
-    publishVersion = project.version
-    desc           = 'Kotlin Collections Methods for RxJava'
-    website        = 'https://github.com/pine613/rxkotlin-collections'
-    licences       = ["MIT"]
-    dryRun         = false
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
 
 task sourcesJar(type: Jar) {
     from sourceSets.main.java.srcDirs
     classifier = 'sources'
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
 }
 
 artifacts {
@@ -83,5 +73,18 @@ task wrapper(type: Wrapper) {
 task findConvensions << {
     println project.getConvention()
 }
+
+apply plugin: 'build-time-tracker'
+buildtimetracker {
+    reporters {
+        summary {
+            ordered false
+            threshold 50
+            barstyle "unicode"
+        }
+    }
+}
+
+apply from: './gradle/bintray.gradle'
 
 check.dependsOn jacocoTestReport
