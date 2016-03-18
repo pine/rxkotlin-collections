@@ -38,7 +38,7 @@ install {
                 licenses {
                     license {
                         name 'MIT License'
-                        url 'https://opensource.org/licenses/MIT'
+                        url 'http://opensource.org/licenses/mit-license.php'
                     }
                 }
                 developers {
