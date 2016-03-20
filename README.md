@@ -15,7 +15,7 @@ dependencies {
 ```
 
 ## Usage
-You can use Observable extensions like [Kotlin collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/) as the following.
+You can use Observable / Single extensions like [Kotlin collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/) as the following.
 
 ```kotlin
 import moe.pine.rx.collections.filterNotNull
@@ -28,6 +28,7 @@ observable.filterNotNull().subscribe { println(it) }
 
 In addition, this library provides an extensions of the following.
 
+### Observable
 - filterIndexed
 - filterIsInstance
 - filterNot
@@ -42,8 +43,12 @@ In addition, this library provides an extensions of the following.
 - none
 - orEmpty
 - reduceIndexed
-- requiresNotNull
+- requireNotNulls
 - withIndex
+
+### Single
+- flatten
+- requireNoNulls
 
 ## Test
 ```
