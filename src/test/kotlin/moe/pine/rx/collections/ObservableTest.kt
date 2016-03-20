@@ -10,16 +10,16 @@ import java.util.*
 import kotlin.test.assertEquals
 
 /**
- * Test for Collections Extensions
+ * Test for Observable Extensions
  * Created by pine on 2016/02/20.
  */
-class CollectionsTest {
+class ObservableTest {
     @Before
     fun setup() {
     }
 
     @After
-    fun teardown() {
+    fun tearDown() {
     }
 
     @Test
@@ -117,9 +117,9 @@ class CollectionsTest {
 
     @Test
     fun flatten() {
-        val observer: Observable<Iterable<String>> = Observable.just(listOf("a", "b", "c"))
+        val observable: Observable<Iterable<String>> = Observable.just(listOf("a", "b", "c"))
         TestSubscriber<String>().apply {
-            observer.flatten().subscribe(this)
+            observable.flatten().subscribe(this)
             this.assertNoErrors()
             this.assertValueCount(3)
             this.assertValues("a", "b", "c")
