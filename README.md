@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    compile 'moe.pine:rxkotlin-collections:0.2.2'
+    compile 'moe.pine:rxkotlin-collections:0.2.3'
 }
 ```
 
