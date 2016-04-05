@@ -97,8 +97,8 @@ class ObservableTest {
         }
 
         TestSubscriber<Int?>().apply {
-            val observable = Observable.just(0, 1, 2)
-            observable.firstOrNull { it > 0 }.subscribe(this)
+            val observable = Observable.just("a", "b")
+            observable.firstOrNull { it.contains("b") }.map { it?.length }.subscribe(this)
             this.assertNoErrors()
             this.assertValueCount(1)
             this.assertValues(1)
