@@ -1,8 +1,9 @@
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-def siteUrl = 'https://github.com/pine613/rxkotlin-collections'
-def gitUrl = 'https://github.com/pine613/rxkotlin-collections.git'
+def siteUrl = 'https://github.com/pine/rxkotlin-collections'
+def gitUrl = 'https://github.com/pine/rxkotlin-collections.git'
+def issueTrackerUrl = 'https://github.com/pine/rxkotlin-collections/issues'
 
 bintray {
     user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
@@ -19,7 +20,7 @@ bintray {
         desc = 'Kotlin Collections Methods for RxJava'
         licenses = ['MIT']
         vcsUrl = siteUrl
-        issueTrackerUrl = 'https://github.com/pine613/rxkotlin-collections/issues'
+        issueTrackerUrl = issueTrackerUrl
         publicDownloadNumbers = true
 
         version {
