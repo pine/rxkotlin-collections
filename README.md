@@ -52,8 +52,15 @@ In addition, this library provides an extensions of the following.
 - requireNoNulls
 
 ## Test
+
 ```
 $ ./gradlew clean test
+```
+
+## Upload Bintray
+
+```
+$ ./gradlew clean assemble bintrayUpload
 ```
 
 ## License
