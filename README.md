@@ -1,7 +1,7 @@
 # RxKotlin Collections
 [![Bintray](https://img.shields.io/bintray/v/pinemz/maven/rxkotlin-collections.svg?style=flat-square)](https://bintray.com/pinemz/maven/rxkotlin-collections/view) [![Build Status](https://img.shields.io/travis/pine/rxkotlin-collections/master.svg?style=flat-square)](https://travis-ci.org/pine/rxkotlin-collections) [![Coverage Status](https://img.shields.io/coveralls/pine/rxkotlin-collections/master.svg?style=flat-square)](https://coveralls.io/github/pine/rxkotlin-collections?branch=master) [![Dependency Status](https://img.shields.io/versioneye/d/user/projects/56f2a16f35630e0034fd9c8a.svg?style=flat-square)](https://www.versioneye.com/user/projects/56f2a16f35630e0034fd9c8a)
 
-Kotlin Collections Methods for RxJava.
+Kotlin Collections Methods for [RxJava](https://github.com/ReactiveX/RxJava).
 
 ## Getting Started
 Please type it in your build.gradle file.
