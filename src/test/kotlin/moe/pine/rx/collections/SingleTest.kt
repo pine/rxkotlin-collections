@@ -10,7 +10,7 @@ import rx.observers.TestSubscriber
  * Test for Observable Extensions
  * Created by pine on 2016/03/21.
  */
-class SingleTestTest {
+class SingleTest {
     @Before
     fun setup() {
     }
