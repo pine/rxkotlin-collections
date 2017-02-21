@@ -21,7 +21,7 @@ apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
 group            = 'moe.pine'
-version          = '0.2.9'
+version          = '0.2.10'
 archivesBaseName = 'rxkotlin-collections'
 
 repositories {
