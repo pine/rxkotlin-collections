@@ -20,11 +20,11 @@ dependencies {
 You can use Observable / Single extensions like [Kotlin collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/) as the following.
 
 ```kotlin
-import moe.pine.rx.collections.filterNotNull
-import rx.Observable
+import moe.pine.rx.collections.filterIndexed
+import io.reactivex.Observable
 
-val observable: Observable<String?> = Observable.from(listOf("a", null, "c"))
-observable.filterNotNull().subscribe { println(it) }
+val observable: Observable<String> = Observable.fromArray("a", "b", "c")
+observable.filterIndexed { i, val -> i % 2 == 0 }.subscribe { println(it) }
 // => "a", "c"
 ```
 
@@ -34,23 +34,17 @@ In addition, this library provides an extensions of the following.
 - filterIndexed
 - filterIsInstance
 - filterNot
-- filterNotNull
-- firstOrNull
 - flatten
 - forEachIndexed
 - isNotEmpty
 - mapIndexed
-- mapIndexedNotNull
-- mapNotNull
 - none
 - orEmpty
 - reduceIndexed
-- requireNotNulls
 - withIndex
 
 ### Single
 - flatten
-- requireNoNulls
 
 ## Test
 
@@ -65,4 +59,5 @@ $ ./gradlew clean assemble bintrayUpload
 ```
 
 ## License
-MIT License
+MIT &copy; Pine Mizune
+
