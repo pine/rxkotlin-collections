@@ -44,6 +44,18 @@ In addition, this library provides an extensions of the following.
 - reduceIndexed
 - withIndex
 
+### Flowable
+- filterIndexed
+- filterIsInstance
+- filterNot
+- flatten
+- forEachIndexed
+- isNotEmpty
+- mapIndexed
+- none
+- orEmpty
+- reduceIndexed
+- withIndex
 
 ## Test
 
