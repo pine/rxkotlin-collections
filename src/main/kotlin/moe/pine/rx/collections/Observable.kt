@@ -44,7 +44,6 @@ fun <T, R> Observable<out T>.mapIndexed(transform: (Int, T) -> R): Observable<R>
     return this.withIndex().map { transform(it.index, it.value) }
 }
 
-
 fun <T> Observable<T>.none(): Single<Boolean> {
     return this.isEmpty
 }

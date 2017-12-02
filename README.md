@@ -44,8 +44,6 @@ In addition, this library provides an extensions of the following.
 - reduceIndexed
 - withIndex
 
-### Single
-- flatten
 
 ## Test
 
