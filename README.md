@@ -18,7 +18,7 @@ dependencies {
 ```
 
 ## Usage
-You can use Observable / Single extensions like [Kotlin collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/) as the following.
+You can use Observable / Flowable extensions like [Kotlin collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/) as the following.
 
 ```kotlin
 import moe.pine.rx.collections.filterIndexed
