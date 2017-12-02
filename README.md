@@ -13,7 +13,8 @@ repositories {
 }
 
 dependencies {
-    compile 'moe.pine:rxkotlin-collections:0.2.9'
+    compile 'moe.pine:rxkotlin-collections:0.2.10' // with RxJava
+    compile 'moe.pine:rxkotlin-collections:0.3.0' // with RxJava 2
 }
 ```
 
